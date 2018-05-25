@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Local Storage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body>
+  
+  <h1>Name Saver of: <span id="memory"></span></h1>
+  <div id="iputDiv">
+    <h2>Type your name here: </h2>
+    <input type="text" id="input" value="">
+    <button id="input-btn" onclick="save()">Save</button>
+    <p id="warning"></p>
+  </div>
+  <div id="confirmDiv">
+    <p>You have changed your name to: <span id="newName"></span></p>
+  </div>
+
+
+  <script>
+
+        let x = document.getElementById("confirmDiv");
+
+    const autoLoad = () => {
+        
+        x.style.display = "none";
+        document.getElementById("memory").innerHTML = localStorage.lastName
+    }
+
+    const save = (item) => {
+      if(typeof(Storage) !== "undefined") {
+          if(document.getElementById('input').value.length >= 1) {
+            item = document.getElementById('input').value 
+            localStorage.setItem("lastName", item)
+            console.log(item)
+            document.getElementById("newName").innerHTML = item
+            document.getElementById("memory").innerHTML = localStorage.getItem("lastName")
+            document.getElementById("warning").innerHTML = ""
+            x.style.display = "block"
+          } else {
+            document.getElementById("warning").innerHTML = "I'm sorry but you have to type something..."
+          }
+          
+      } 
+    }
+
+    autoLoad()
+
+
+  
+  </script>
+  
+</body>
+</html>
