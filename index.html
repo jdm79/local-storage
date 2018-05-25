@@ -15,7 +15,7 @@
     <h2>Type your name here: </h2>
     <input type="text" id="input" value="">
     <button id="input-btn" onclick="save()">Save</button>
-    <p id="warning"></p>
+    <p id="warning" style="color:red"></p>
   </div>
   <div id="confirmDiv">
     <p>You have changed your name to: <span id="newName"></span></p>
@@ -26,7 +26,7 @@
 
         let x = document.getElementById("confirmDiv");
 
-    const autoLoad = () => {
+        const autoLoad = () => {
         
         x.style.display = "none";
         document.getElementById("memory").innerHTML = localStorage.lastName
@@ -44,8 +44,7 @@
             x.style.display = "block"
           } else {
             document.getElementById("warning").innerHTML = "I'm sorry but you have to type something..."
-          }
-          
+          } 
       } 
     }
 
