@@ -31,30 +31,28 @@
         x.style.display = "none";
         document.getElementById("memory").innerHTML = localStorage.lastName
         document.getElementById("title").innerHTML = localStorage.getItem("lastName")
-    }
+        }
 
-    const save = (item) => {
-      if(typeof(Storage) !== "undefined") {
-          if(document.getElementById('input').value.length >= 1) {
-            item = document.getElementById('input').value 
-            localStorage.setItem("lastName", item)
-            console.log(item)
-            document.getElementById("newName").innerHTML = item
-            document.getElementById("memory").innerHTML = localStorage.getItem("lastName")
-            document.getElementById("title").innerHTML = localStorage.getItem("lastName")
-            document.getElementById("warning").innerHTML = ""
-            document.getElementById("input").value = ""
-            x.style.display = "block"
-          } else {
-            document.getElementById("warning").innerHTML = "I'm sorry but you have to type something..."
-          } 
-      } 
-    }
+        const save = (item) => {
+          if(typeof(Storage) !== "undefined") {
+              if(document.getElementById('input').value.length >= 1) {
+                item = document.getElementById('input').value 
+                localStorage.setItem("lastName", item)
+                console.log(item)
+                document.getElementById("newName").innerHTML = item
+                document.getElementById("memory").innerHTML = localStorage.getItem("lastName")
+                document.getElementById("title").innerHTML = localStorage.getItem("lastName")
+                document.getElementById("warning").innerHTML = ""
+                document.getElementById("input").value = ""
+                x.style.display = "block"
+              } else {
+                document.getElementById("warning").innerHTML = "I'm sorry but you have to type something..."
+              } 
+            } 
+          }
 
-    autoLoad()
+        autoLoad()
 
-
-  
   </script>
   
 </body>
