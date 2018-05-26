@@ -21,15 +21,49 @@
     <p>You have changed your name to: <span id="newName"></span></p>
   </div>
 
-  <div id="audio">
-      <audio controls>
+  <div>
+      <audio controls id="audio1">
           <source src="upthebeach.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
         </audio>
   </div>
+  <div>
+      <button id="increase" onclick="increase()">volume up</button>
+      <button id="decrease" onclick="decrease()">volume down</button>
+      <button id="volume"></button>
+      <button id="mute" onclick="mute()">Mute</button>
+  </div>
 
 
   <script>
+
+        const song = document.getElementById('audio1')
+        
+        const increase = () => {
+          if (song.volume < 0.99) {
+            song.volume = song.volume + 0.1
+          } else {
+            song.volume = 1
+          }
+          console.log("clicked", song.volume)
+        }
+
+        const decrease = () => {
+          if (song.volume >= 0.11) {
+            song.volume = song.volume - 0.1
+          } else {
+            song.volume = 0
+          }
+          console.log("clicked", song.volume)
+        }
+
+        const mute = () => {
+          if(song.volume === 0) {
+            song.volume = 0.5
+          } else if (song.volume !== 0) {
+            song.volume = 0
+          }
+        }
 
         const x = document.getElementById("confirmDiv");
 
