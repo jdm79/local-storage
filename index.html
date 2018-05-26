@@ -32,6 +32,10 @@
       <button id="decrease" onclick="decrease()">volume down</button>
       <button id="volume"></button>
       <button id="mute" onclick="mute()">Mute</button>
+      <button id="howLong" onclick="duration()">Song Duration</button>
+  </div>
+  <div id="durationDiv">
+      <p id="duration"></p>
   </div>
 
 
@@ -65,13 +69,29 @@
           }
         }
 
-        const x = document.getElementById("confirmDiv");
+        const y = document.getElementById('durationDiv')
+
+        const duration = () => {
+          let minutes = Math.floor(song.duration/60)
+          let seconds = Math.floor(song.duration%60)
+          document.getElementById('duration').innerHTML = 
+          `This song is ${minutes} minutes and ${seconds} seconds long`
+
+          if(y.style.display === "none") {
+            y.style.display = "block"
+          } else {
+            y.style.display = "none"
+          }
+        }
+
+        const x = document.getElementById("confirmDiv")
 
         const autoLoad = () => {
         
-        x.style.display = "none";
-        document.getElementById("memory").innerHTML = localStorage.lastName
-        document.getElementById("title").innerHTML = localStorage.getItem("lastName")
+          x.style.display = "none"
+          y.style.display = "none"
+          document.getElementById("memory").innerHTML = localStorage.lastName
+          document.getElementById("title").innerHTML = localStorage.getItem("lastName")
         }
 
         const save = (item) => {
