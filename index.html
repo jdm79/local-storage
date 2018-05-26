@@ -30,7 +30,7 @@
   <div>
       <button id="increase" onclick="increase()">volume up</button>
       <button id="decrease" onclick="decrease()">volume down</button>
-      <button id="volume"></button>
+      <p id="volume" value="0"></p>
       <button id="mute" onclick="mute()">Mute</button>
       <button id="howLong" onclick="duration()">Song Duration</button>
   </div>
@@ -42,13 +42,20 @@
   <script>
 
         const song = document.getElementById('audio1')
-        
+
+        const updateVol = () => {
+          let vol = song.volume.toFixed(1)*10
+          document.getElementById('volume').innerHTML = vol
+
+        }
+
         const increase = () => {
           if (song.volume < 0.99) {
             song.volume = song.volume + 0.1
           } else {
             song.volume = 1
           }
+          updateVol()
           console.log("clicked", song.volume)
         }
 
@@ -58,14 +65,18 @@
           } else {
             song.volume = 0
           }
+          updateVol()
           console.log("clicked", song.volume)
         }
 
         const mute = () => {
           if(song.volume === 0) {
             song.volume = 0.5
+            document.getElementById('volume').innerHTML = 5
+
           } else if (song.volume !== 0) {
             song.volume = 0
+            document.getElementById('volume').innerHTML = 0
           }
         }
 
@@ -90,8 +101,11 @@
         
           x.style.display = "none"
           y.style.display = "none"
+          let vol = song.volume.toFixed(1)*10
           document.getElementById("memory").innerHTML = localStorage.lastName
           document.getElementById("title").innerHTML = localStorage.getItem("lastName")
+          document.getElementById('volume').innerHTML = vol
+
         }
 
         const save = (item) => {
